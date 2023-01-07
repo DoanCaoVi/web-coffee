@@ -36,6 +36,11 @@
                                     data-validation-error-msg="vui lòng nhập số lượng" name ="product_quantity" class="form-control" id="exampleInputEmail1" placeholder="nhập số lượng" required="">
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">Xuất xứ</label>
+                                    <textarea style="Resize: none" rows ="3" name = "product_origin" class="form-control " 
+                                    placeholder="Xuất xứ" required=""></textarea>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh</label>
                                     <input type="file" name ="product_image" class="form-control" 
                                     id="exampleInputEmail1" placeholder="Enter email" required="">

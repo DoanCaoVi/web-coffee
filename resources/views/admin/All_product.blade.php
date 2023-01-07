@@ -42,11 +42,12 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên Sản Phẩm</th>
+            <th>Tên sản phẩm</th>
             <th>Giá</th>
             <th>Số sượng tồn kho</th>
-            <th>Hình Ảnh</th>
-            <th>Danh Mục</th>
+            <th>Danh mục</th>
+            <th>Hình ảnh</th>
+            <th>Xuất xứ</th>
             <th>Loại</th>
             <th>Hiển thị</th>
             <th style="width:30px;"></th>
@@ -59,8 +60,9 @@
             <td>{{$pro_pro->product_name}}</td>
             <td>{{$pro_pro->product_price}}</td>
             <td>{{$pro_pro->product_quantity}}</td>
-            <td><img src="public/uploads/product/{{$pro_pro->product_image}} " height="200px" width="300px"> </td> <!-- hiện hình ảnh đã có -->
             <td>{{$pro_pro->category_name}}</td>
+            <td><img src="public/uploads/product/{{$pro_pro->product_image}} " height="200px" width="300px"> </td> <!-- hiện hình ảnh đã có -->
+            <td>{{$pro_pro->product_origin}}</td>
             <td>{{$pro_pro->material_name}}</td>
 
             <td><span class="text-ellipsis">

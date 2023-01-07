@@ -46,6 +46,7 @@ class ProductController extends Controller
         $data ['product_name'] = $request->product_name;  /* $data ['tên trường trong cơ sở dữ liệu'] = $request->tên name trong thẻ input(tự đặt); */
         $data ['product_price'] = $request->product_price;
         $data ['product_quantity'] = $request->product_quantity;
+        $data ['product_origin'] = $request->product_origin;
         $data ['product_desc'] = $request->product_desc;
         $data ['product_content'] = $request->product_content;
         $data ['category_id'] = $request->product_cate;//tên name product_cate trong thẻ
@@ -104,6 +105,7 @@ class ProductController extends Controller
         $data ['product_name'] = $request->product_name;  /* $data ['tên trường trong cơ sở dữ liệu'] = $request->tên name trong thẻ input(tự đặt); */
         $data ['product_price'] = $request->product_price;
         $data ['product_quantity'] = $request->product_quantity;
+        $data ['product_origin'] = $request->product_origin;
         $data ['product_desc'] = $request->product_desc;
         $data ['product_content'] = $request->product_content;
         $data ['category_id'] = $request->product_cate;//tên name product_cate trong thẻ

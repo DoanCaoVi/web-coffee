@@ -36,6 +36,11 @@
                                      id="exampleInputEmail1" value="{{$pro_pro->product_quantity}}">
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">Xuất xứ</label>
+                                    <textarea style="Resize: none" rows ="3" name = "product_origin" class="form-control" 
+                                    >{{$pro_pro->product_origin}}</textarea> <!-- gọi ở ngoài -->
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh</label>
                                     <input type="file" name ="product_image" class="form-control" 
                                     id="exampleInputEmail1" >
