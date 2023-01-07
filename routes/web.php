@@ -133,6 +133,8 @@ Route::get('/view-order/{order_code}','OrderController@view_order');
 Route::get('/delete-order/{order_code}','OrderController@delete_order');
 
 Route::post('/update-order-qty','OrderController@update_order_qty');
+//cập nhật số lượng của đơn hàng
+Route::post('/update-qty','OrderController@update_qty');
 /* export excel */ 
 Route::post('/export-orderdetails','OrderController@export_orderdetails');
 /* Route::get('/manage-order','CheckoutController@manage_order');

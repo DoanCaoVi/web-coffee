@@ -21,6 +21,13 @@ session_start();
 
 class OrderController extends Controller
 {
+    public function update_qty(Request $request){
+        $data = $request->all();
+        $order_details = OrderDetails::where('product_id', $data['order_product_id'])->where('order_code', $data['order_code'])->first();
+        $order_details->product_sales_quantity = $data['order_qty'];
+        $order_details->save();
+    }
+
     public function update_order_qty(Request $request){
         //update order
         $data = $request ->all();
@@ -37,7 +44,24 @@ class OrderController extends Controller
                     if($key == $key2){
                         $pro_remain = $product_quantity - $qty;
                         $product->product_quantity = $pro_remain;
-                        $product->product_sold = $product_sold + $product_quantity;
+                        $product->product_sold = $product_sold + $qty;
+                        $product->save();
+                    }
+
+                }
+
+            }
+        }elseif($order->order_status!=2 && $order->order_status!=3){
+            foreach($data['order_product_id'] as $key => $product_id){
+                $product = Product::find($product_id);
+                $product_quantity = $product->product_quantity;
+                $product_sold = $product->product_sold;
+                foreach($data['quantity'] as $key2 => $qty){
+
+                    if($key == $key2){
+                        $pro_remain = $product_quantity + $qty;
+                        $product->product_quantity = $pro_remain;
+                        $product->product_sold = $product_sold - $qty;
                         $product->save();
                     }
 
@@ -233,6 +257,7 @@ class OrderController extends Controller
         foreach($order as $key => $ord){
             $customer_id =$ord->customer_id;
             $shipping_id =$ord->shipping_id;
+            $order_status =$ord->order_status;
         }
         $customer = Customer::where('customer_id',$customer_id)->first();
         $shipping = Shipping::where('shipping_id',$shipping_id)->first();
@@ -250,7 +275,7 @@ class OrderController extends Controller
             $coupon_number = 0;
         }
 
-        return view('admin.view_order')->with(compact('order_details', 'customer', 'shipping', 'order_details_product', 'coupon_condition', 'coupon_number', 'order'));
+        return view('admin.view_order')->with(compact('order_details', 'customer', 'shipping', 'order_details_product', 'coupon_condition', 'coupon_number', 'order','order_status'));
     }
 
     public function delete_order($order_code){
