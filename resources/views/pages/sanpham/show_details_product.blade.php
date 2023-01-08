@@ -48,8 +48,8 @@
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
 									<span>Giá: {{number_format($details->product_price)}}.VNĐ </span>
-									<label>Số Lượng: </label>
-									<input name = "qty" type="number" min="1" max= "1000" value="1" />
+									<!-- <label>Số Lượng: </label> -->
+									<!-- <input name = "qty" type="number" min="1" max= "1000" value="1" /> -->
 									<input name = "product_id_hidden" type="hidden" min="1" max= "1000" value="{{$details->product_id}}" />
 									<a href="{{URL::to('/chi-tiet-san-pham/'.$details->product_id)}}">
 									<div class="overlay-content">
@@ -60,9 +60,9 @@
 									<input type="hidden" value="1" class="cart_product_qty_{{$details->product_id}}">
 									</a>
 											
-								<button type="button" class="btn btn-default add-to-cart" data-id_product="{{$details->product_id}}" name="add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
+								<button type="button" class="btn btn-1 btn-default custom-btn add-to-cart" data-id_product="{{$details->product_id}}" name="add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
 								</span>
-								<h2><b>Kho hàng: </b> {{$details->product_quantity}}</h>
+								<h2><b>Kho hàng còn: </b> {{$details->product_quantity}}</h>
 								<h2><b>Xuất xứ: </b> {{$details->product_origin}}</h>
 								<h2><b>Danh mục: </b> {{$details->category_name}}</h>
 								<h2><b>Loại: </b> {{$details->material_name}}</h>
@@ -146,8 +146,7 @@
 													<input type="hidden" value="{{$details->product_price}}" class="cart_product_price_{{$details->product_id}}">
 													<input type="hidden" value="1" class="cart_product_qty_{{$details->product_id}}">
 													<h2>{{number_format($lienquan->product_price)}}.VNĐ</h2>
-													<p>{{$lienquan->product_name}}</p>
-													<button type="button" class="btn btn-default add-to-cart" data-id_product="{{$lienquan->product_id}}" name="add-to-cart">
+													<h5>{{$lienquan->product_name}}</h>
 												</form>
 												</div>
 											</div>

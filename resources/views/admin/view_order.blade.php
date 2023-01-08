@@ -35,6 +35,10 @@
           $a = 0;
           $total = 0;
         @endphp
+          @php
+            $b = 0;
+            $detailsprint = 0;
+          @endphp
         @foreach($order_details_product as $key => $details)
               @php
                 $a++;
@@ -58,6 +62,15 @@
             <td>{{$details->product->product_origin}}</td>
             <td>{{number_format($subtotal,0,',','.')}} VNĐ</td>
           </tr>
+              @php
+                $b++;
+                $detailsprint +=$order_status+$b;
+              @endphp
+            @if($detailsprint==2 || $detailsprint==3)
+              <button>
+                <a class="box" target="_blank" href="{{url('/print-order/'.$details->order_code)}}">Print....</a>
+              </button>
+            @endif
         @endforeach
         <tr>
             <td colspan="2" style="color:#6c7d8b;font-weight:bold;font-size:1rem;">
@@ -106,12 +119,6 @@
       <!-- lệnh target = _blank khi bấm vào sẽ sinh ra một cái trang pdf mới -->
     </div>
 
-    <button>
-        @foreach($order_details_product as $key => $details)
-          <a class="box" target="_blank" href="{{url('/print-order/'.$details->order_code)}}">Print....</a>
-        @endforeach
-    </button>
-
   <form action="{{url('export-orderdetails')}}" method="POST" style="margin-top:20px;">
     @csrf
     <input type="submit" value="Export file Excel" name="export_csv" class="btn btn-success">
@@ -123,12 +130,12 @@
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
+            <!-- <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
             <li><a href="">1</a></li>
             <li><a href="">2</a></li>
             <li><a href="">3</a></li>
             <li><a href="">4</a></li>
-            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+            <li><a href=""><i class="fa fa-chevron-right"></i></a></li> -->
           </ul>
         </div>
       </div>
@@ -154,7 +161,7 @@
         <thead>
           <tr>
 
-            <th>Tên người mua</th>
+            <th>Tên người nhập</th>
             <th>Số điện thoại</th>
             <th>Email</th>
           </tr>
@@ -178,12 +185,12 @@
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
+            <!-- <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
             <li><a href="">1</a></li>
             <li><a href="">2</a></li>
             <li><a href="">3</a></li>
             <li><a href="">4</a></li>
-            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+            <li><a href=""><i class="fa fa-chevron-right"></i></a></li> -->
           </ul>
         </div>
       </div>

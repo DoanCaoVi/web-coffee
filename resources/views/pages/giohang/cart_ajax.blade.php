@@ -20,13 +20,14 @@
 			
 				<form action="{{url('/update-cart')}}" method="post">
 				@csrf
-				<table class="table table-condensed"  style="width: 98%;">
+				<table class="table table-condensed"  style="width: 85%;">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Hình ảnh</td>
-							<td class="description">Tên</td>
-							<td class="price">Giá sản phẩm</td>
-							<td class="quantity">Số Lượng</td>
+							<td class="description">Tên sản phẩm</td>
+							<td class="price">Giá</td>							
+							<td class="quantity">Số lượng hàng tồn</td>
+							<td class="quantity">Số lượng hàng xuất</td>
 							<td class="total">Thành Tiền</td>
 						</tr>
 					</thead>
@@ -36,7 +37,7 @@
 							@php
 								$total = 0;
 							@endphp
-				@foreach(Session::get('cart') as $key => $cart)
+				@foreach(Session::get('cart') as $key1 => $cart)
 							@php
 								$subtotal = $cart['product_price']*$cart['product_qty'];
 								$total+=$subtotal;
@@ -51,6 +52,9 @@
 								</td>
 								<td class="cart_price">
 									<h3>{{number_format($cart['product_price'],0,',','.')}}.VNĐ</h>
+								</td>
+								<td class="cart_price">
+									<h4>{{number_format($cart['product_quantity')]}}</h>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
@@ -72,10 +76,10 @@
 								</td>
 							</tr>
 							
-					@endforeach
+						@endforeach
 							<tr>
 								<td>
-									<input type ="submit" value="cập nhật" name="update_qty" class="btn btn-default check_out btn-sm">
+									<input type ="submit" value="cập nhật số lượng nhập" name="update_qty" class="btn btn-default check_out btn-sm">
 								</td>
 								<td>
 									<a class="btn btn-default check_out" href="{{url('/delete-all')}}">xoá tất cả sản phẩm</a>
@@ -132,7 +136,7 @@
 						   <tr>
 								<td colspan="5">
 									@php
-										echo 'Vui lòng thêm sản phẩm';
+										echo 'Vui lòng thêm sản phẩm cần nhập kho';
 									@endphp
 								</td>
 						   </tr>

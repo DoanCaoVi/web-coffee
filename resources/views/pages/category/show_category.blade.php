@@ -3,7 +3,7 @@
 @section('content')
 
 	@foreach($category_name as $key => $name_cate)
-		<h2 class="title text-center">Tất cả các sản phẩm thuộc Danh Mục: {{$name_cate->category_name}}</h2>
+	<p class="title-text-center text-center">Tất cả các sản phẩm thuộc Danh Mục: {{$name_cate->category_name}}</p>
 	@endforeach		
 	<section>
 	<div class="overlay"></div>
@@ -226,7 +226,7 @@
 					html += '</a>';
 					html += '<p>' + item.pro_name + '</p>';
 					html += '<h2>' + item.price + '</h2>';
-					html += '<button type="button" class="btn btn-default add-to-cart" data-id_product='+ item.button +' name="add-to-cart">Thêm</button>';
+					html += '<button type="button" class="btn btn-1 custom-btn btn-default add-to-cart " data-id_product='+ item.button +' name="add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm</button>';
 					html += '</div>';
 					return html;
 				}

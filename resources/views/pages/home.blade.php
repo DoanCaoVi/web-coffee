@@ -189,6 +189,7 @@
 			const content = product.map((item, index) => {
 				if (index >= start && index < end) {
 					html += '<div class="content__product__item">';
+					html += '<form>'
 					html += '@csrf';
 					html += '<a href='+ item.chitiet +'>';
 					html += '<input type="hidden" value="'+ item.id +'" class="cart_product_id_'+ item.id +'">';
@@ -200,7 +201,8 @@
 					html += '</a>';
 					html += '<p>' + item.pro_name + '</p>';
 					html += '<h2>' + item.price + '</h2>';
-					html += '<button type="button" class="btn btn-default add-to-cart" data-id_product='+ item.button +' name="add-to-cart">Thêm</button>';
+					html += '<button type="button" class="btn btn-1 custom-btn btn-default add-to-cart" data-id_product='+ item.button +' name="add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm</button>';
+					html += '</form>'
 					html += '</div>';
 					return html;
 				}

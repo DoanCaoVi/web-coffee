@@ -172,7 +172,8 @@
 										0 0  15px #6cd2ef,
 							0 0  30px #6cd2ef;
 							color: aliceblue;
-						"><span >Website</span> Trang Coffee</h2>
+						">
+						<span >Website</span> Trang Coffee</h2>
 						</div>
 
 
@@ -265,6 +266,24 @@
 						</div>
 					</form>
 					</div> -->
+					<div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+						<div class="wheel"></div>
+						<div class="hamster">
+							<div class="hamster__body">
+								<div class="hamster__head">
+									<div class="hamster__ear"></div>
+									<div class="hamster__eye"></div>
+									<div class="hamster__nose"></div>
+								</div>
+								<div class="hamster__limb hamster__limb--fr"></div>
+								<div class="hamster__limb hamster__limb--fl"></div>
+								<div class="hamster__limb hamster__limb--br"></div>
+								<div class="hamster__limb hamster__limb--bl"></div>
+								<div class="hamster__tail"></div>
+							</div>
+						</div>
+						<div class="spoke"></div>
+					</div>
 				</div>
 			</div>
 		</div><!--/header-bottom-->
@@ -437,8 +456,8 @@
 						success:function(data){
 							
 							 swal({
-									title: "Đã thêm sản phẩm vào giỏ để nhập kho",
-									text: "Bạn có thể chọn sản phẩm hoặc tới kho để tiến hành gửi yêu cầu nhập kho",
+									title: "Đã thêm sản phẩm vào giỏ để nhập kho hàng bán",
+									text: "Bạn có thể tiếp tục chọn sản phẩm hoặc tới giỏ để tiến hành gửi yêu cầu nhập kho hàng bán",
 									showCancelButton: true,
 									cancelButtonText: "Xem tiếp",
 									confirmButtonClass: "btn-success",

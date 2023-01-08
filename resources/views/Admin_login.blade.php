@@ -116,7 +116,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</form>
 
 </div>
-
 		<!-- <p>Bạn Không có tài khoản ?<a href="registration.html">Tạo 1 tài khoản mới</a></p>  --><!-- biến thành chú thích -->
 
 </div>

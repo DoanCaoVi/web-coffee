@@ -1,13 +1,15 @@
 @extends('layout')
 @section('content')
 	<section id="form" style="
-    background-image: linear-gradient(0,rgb(51 51 51),rgb(210 218 208));
     border-radius: 15px;
-    border: 15px solid #d3ec9f;
 	padding-bottom:20px;
+	border-radius: 30px;
+	background: #212121;
+	box-shadow: 15px 15px 30px rgb(25, 25, 25),
+				-15px -15px 30px rgb(60, 60, 60);
 	color:#fff;"><!--form-->
 		<div class="container">
-			<div class="row">
+			<div class="row" style="margin-left: -165px;width: 104.333333%;">
 				<div class="col-sm-4 col-sm-offset-1" >
 					<div class="login-form"><!--login form-->
 						<h2 style="margin-left: 51px;color:#fff;font-weight:bold;">Đăng Nhập Tài Khoản</h2>

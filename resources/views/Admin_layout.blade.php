@@ -171,10 +171,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Kho Hàng</span>
+                        <span>Kho Hàng Xuất</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/manage-order')}}">Quản lý kho hàng</a></li>
+						<li><a href="{{URL::to('/manage-order')}}">Quản lý kho hàng xuất</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Kho hàng nhập</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/Add-product')}}">Thêm hàng nhập</a></li>
+						<li><a href="{{URL::to('/All-product')}}">Danh sách Kho hàng nhập</a></li>
                     </ul>
                 </li>
                 <!-- <li class="sub-menu">
@@ -216,18 +226,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="{{URL::to('/All-material-product')}}">Danh Sách Loại hàng</a></li>
                     </ul>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>Sản Phẩm</span>
-                    </a>
-                    <ul class="sub">
-						<li><a href="{{URL::to('/Add-product')}}">Thêm Sản Phẩm</a></li>
-						<li><a href="{{URL::to('/All-product')}}">Danh Sách Sản Phẩm</a></li>
-                    </ul>
-                </li>
-            </ul>            </div>
+            </ul>            
+        </div>
         <!-- sidebar menu end-->
+
     </div>
 </aside>
 <!--sidebar end-->
