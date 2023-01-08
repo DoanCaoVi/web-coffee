@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Cập nhật loại hàng hóa
+                            Cập nhật loại sản phẩm
                         </header>
                         <?php
                                 $message = Session::get('message');//lấy cái key message bên routes trong web.php qua và hiển thị nội dung của nó

@@ -2,7 +2,7 @@
 @extends('layout')<!-- gọi từ welcome.blade.php qua -->
 @section('content')
 
-<h2 class="title text-center">Sản phẩm có thể chọn vào kho hàng</h2>
+<p class="title-text-center text-center">Sản phẩm có thể chọn vào kho hàng</p>
 <section>
 	<div class="overlay"></div>
 	<div class="content">

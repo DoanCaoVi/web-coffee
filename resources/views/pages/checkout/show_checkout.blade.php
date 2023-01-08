@@ -4,9 +4,6 @@
 <section id="cart_items">
 <div class="container"
  style=" background-image: linear-gradient(0,rgb(51 51 51),rgb(58 58 56));
-    	border-radius: 15px;
-    	border: 15px solid #d3ec9f;
-		padding: 80px;
 		font-size: 20px;">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
@@ -18,12 +15,12 @@
 												0 0  30px #6cd2ef;
 									color: white;
 									font-weight: bold;
-								">Thanh toán Giỏ hàng</li>
+								">Điền thông tin người nhập</li>
 				</ol>
 			</div>
 
 			<div class="register-req">
-				<p>Vui lòng đăng ký hoặc đăng nhập để thanh toán giỏ hàng của bạn</p>
+				<p>Vui lòng đăng ký tài khoản hoặc đăng nhập để bắt đầu nhập kho</p>
 			</div><!--/register-req-->
 
 			<div class="shopper-informations">
@@ -42,7 +39,7 @@
 									<p>Ghi chú</p>
 									<textarea name="shipping_notes" class="shipping_notes" placeholder="Ghi chú cho người gửi" rows="5"></textarea>
 									
-									@if(Session::get('fee'))
+									<!-- @if(Session::get('fee'))
 									<input type="hidden" name="order_fee" class="order_fee" value="session::get('fee')">
 									@else
 									<input type="hidden" name="order_fee" class="order_fee" value="30000">
@@ -54,8 +51,8 @@
 									@endforeach
 									@else
 									<input type="hidden" name="order_coupon" class="order_coupon" value="no">
-									@endif
-									<div class="" style="display:flex;flex-direction:column;">
+									@endif -->
+									<!-- <div class="" style="display:flex;flex-direction:column;">
 										<div class="form-group">
 											<label for="exampleInputEmail1">chọn phương thức thanh toán</label>
 											<select style="padding-left:250px;;" name="payment_select" class="form-control input-sm m-bot15 payment_select">
@@ -63,37 +60,38 @@
 												<option style="background-color:#5bc0de;" value = "1">Thanh Toán Bằng Tiền Mặt</option>
 											</select>
 										</div>
-									</div>
+									</div> -->
 									
-									<input type ="button"  style="background-color:#5bc0de;color:white;" value="Xác nhận đơn hàng" name="send_order" class="btn btn-sm send_order">
+									<input type ="button"  style="background-color:#5bc0de;color:white;" value="Xác nhận gửi" name="send_order" class="btn btn-sm send_order">
 								</form>
-								<form role="form" style="flex:1;margin-left: 317px;" action="{{URL::to('/save-material-product')}}" method="post">
-                                @csrf <!-- tự động tạo ra 1 cái input hidden token để bảo mật hệ thống -->
-                            
-                                <div class="form-group" >
-                                <label for="exampleInputEmail1">Chọn Thành Phố</label>
-                                    <select style="padding-left:250px;" name="city" id="city" class="form-control input-sm m-bot15 choose city">
-                                        <option value = "">~~~~~~ Chọn hành Phố  ~~~~~~</option>
-                                        @foreach ($city as $key => $ci)
-                                        <option value ={{$ci->matp}} >{{$ci->name_city}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail1">Chọn quận huyện</label>
-                                    <select style="padding-left:250px;" name="province" id="province" class="form-control input-sm m-bot15 choose province">
-                                        <option value = "">~~~~~~ Chọn quận huyện ~~~~~~</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail1">chọn xã phường</label>
-                                    <select style="padding-left:250px;" name="wards" id="wards" class="form-control input-sm m-bot15 wards">
-                                    <option value = "">~~~~~~ Chọn xã phường ~~~~~~</option>
-                                    </select>
-                                </div>
+								
+								<!-- <form role="form" style="flex:1;margin-left: 317px;" action="{{URL::to('/save-material-product')}}" method="post">
+									@csrf tự động tạo ra 1 cái input hidden token để bảo mật hệ thống
+								
+									<div class="form-group" >
+									<label for="exampleInputEmail1">Chọn Thành Phố</label>
+										<select style="padding-left:250px;" name="city" id="city" class="form-control input-sm m-bot15 choose city">
+											<option value = "">~~~~~~ Chọn hành Phố  ~~~~~~</option>
+											@foreach ($city as $key => $ci)
+											<option value ={{$ci->matp}} >{{$ci->name_city}}</option>
+											@endforeach
+										</select>
+									</div>
+									<div class="form-group">
+									<label for="exampleInputEmail1">Chọn quận huyện</label>
+										<select style="padding-left:250px;" name="province" id="province" class="form-control input-sm m-bot15 choose province">
+											<option value = "">~~~~~~ Chọn quận huyện ~~~~~~</option>
+										</select>
+									</div>
+									<div class="form-group">
+									<label for="exampleInputEmail1">chọn xã phường</label>
+										<select style="padding-left:250px;" name="wards" id="wards" class="form-control input-sm m-bot15 wards">
+										<option value = "">~~~~~~ Chọn xã phường ~~~~~~</option>
+										</select>
+									</div>
 
-                            	<input type ="button" style="background-color:#5bc0de;color:white;" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-sm calculate_delivery" >
-								</form>
+									<input type ="button" style="background-color:#5bc0de;color:white;" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-sm calculate_delivery" >
+								</form> -->
 							</div>
 						</div>
 					</div>
@@ -109,12 +107,12 @@
 								
 								<form action="{{url('/update-cart')}}" method="post">
 								@csrf
-								<table class="table table-condensed" style="margin-left: 75px;background-color: #292b28;border-radius: 72px;">
+								<table class="table table-condensed" style="margin-left: 13%;">
 									<thead>
 										<tr class="cart_menu">
 											<td class="image">Hình ảnh</td>
 											<td class="description">Tên</td>
-											<td class="price">Giá sản phẩm</td>
+											<td class="price">Giá</td>
 											<td class="quantity">Số Lượng</td>
 											<td class="total">Thành Tiền</td>
 										</tr>
@@ -257,7 +255,7 @@
 										@endif
 									</tbody>
 									</form>	
-										<tr>
+										<!-- <tr>
 												<td>
 
 													<form method="POST" action="{{url('/check-coupon')}}">
@@ -266,7 +264,7 @@
 														<input type="submit" class="btn btn-default check_out check_coupon" name="check_coupon" value="Tính mã giảm giá">
 													</form>
 												</td>
-										</tr>
+										</tr> -->
 										
 								</table>
 								

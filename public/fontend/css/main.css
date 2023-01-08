@@ -330,7 +330,7 @@ ul.sub-menu {
 }
 
 .navbar-nav li ul.sub-menu li a:hover{
-  color: #a697e2;
+  color: #9dff00;
   font-size: 20px;
 }
 
@@ -667,7 +667,6 @@ ul.sub-menu {
 }
 
 .category-products {
-  border: 5px solid #a2a285;
   border-radius: 15px;
   margin-bottom: 35px;
   padding-bottom: 20px;
@@ -677,26 +676,25 @@ ul.sub-menu {
 .left-sidebar h2, .brands_products h2 {
   color: #a6e1ef;;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   margin: 0 auto 30px;
   text-align: center;
   text-transform: uppercase;
   position: relative;
   z-index:3;
-  box-shadow: 0 0 5px #6cd2ef, 0 0 10px #6cd2ef, 0 0 15px #6cd2ef, 0 0 30px #6cd2ef;
 }
 
 .left-sidebar h2:after, h2.title:after{
 	content: " ";
 	position: absolute;
-  border: 8px solid #f5f5f5;
+  border: 5px solid #f5f5f5;
 	bottom:8px;
 	left: 0;
 	width: 100%;
 	height: 0;
   z-index: -2;
-  box-shadow: 0 0 5px #6cd2ef, 0 0 10px #6cd2ef, 0 0 15px #6cd2ef, 0 0 30px #6cd2ef;
+  box-shadow: 0 0 5px #6cd2ef, 0 0 5px #6cd2ef, 0 0 10px #6cd2ef, 0 0 20px #6cd2ef;
 }
 
 .left-sidebar h2:before{
@@ -723,6 +721,7 @@ h2.title:before{
 	margin-left: -110px;
 }
 
+
 .category-products .panel {
 	background-color: #FFFFFF;
 	border: 0px;
@@ -745,7 +744,7 @@ h2.title:before{
 
 }
 .category-products .panel-default .panel-heading:hover{
-  background-color: #726f6f;
+  background-color: #aca4a4;
 
 }
 .category-products .panel-default .panel-heading .panel-title a {
@@ -872,15 +871,25 @@ h2.title:before{
 
 
 h2.title {
-  color: #FFFFFF;
+  color: #F9F871;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  margin: 0 15px;
+  margin: 15px;
   text-transform: uppercase;
   margin-bottom: 30px;
   position: relative;
-  text-shadow: 0 0 5px #6cd2ef, 0 0 25px #6cd2ef, 0 0 50px #6cd2ef, 0 0 100px #6cd2ef
+}
+
+.title-text-center {
+  color: #008F7A;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 15px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  position: relative;
 }
 
 .product-image-wrapper{
@@ -922,7 +931,7 @@ h2.title {
 
 .productinfo img{
   width: 100%;
-  height: 375px;
+  height: 275px;
 }
 
 .productinfo{
@@ -1589,7 +1598,7 @@ h2.title {
   content:"";
   height:auto;
   width: auto;
-  border-width: 15px;
+  border-width: 10px;
   border-style: solid;
   border-color:transparent transparent transparent #FE980F;
   position: absolute;
@@ -1704,10 +1713,10 @@ h2.title {
 
 
 .cart_delete a {
-  background:#F0F0E9;
-  color: #FFFFFF;
-  padding: 5px 7px;
-  font-size: 16px
+  background: #d9eaff;
+  color: #e70606;
+  padding: 15px 15px;
+  font-size: 28px;
 }
 
 .cart_delete a:hover {
@@ -2155,7 +2164,6 @@ h2.title {
   background:#FE980F;
   color: #fff
 }
-
 
 
 /*************************
@@ -2652,4 +2660,75 @@ h2.title {
   50%,100%{
       bottom: 100%;
   }
+}
+
+
+.box {
+  width: 140px;
+  height: auto;
+  float: left;
+  transition: .5s linear;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 15px;
+  text-align: center;
+  margin: 0 5px;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.box:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(100%);
+}
+
+.box:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+}
+
+.box:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.box:hover:before {
+  border-color: #E71D49;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .3s;
+}
+
+.box:hover:after {
+  border-color: #E71D49;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .5s;
+}
+
+button {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+  text-decoration: none;
 }

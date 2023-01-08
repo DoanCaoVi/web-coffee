@@ -122,6 +122,7 @@ Route::post('/login-customer','CheckoutController@login_customer');
 Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer');
 Route::post('/select-delivery-home','CheckoutController@select_delivery_home');
 Route::post('/calculate-fee','CheckoutController@calculate_fee');
+
 Route::post('/confirm-order','CheckoutController@confirm_order');
 
 

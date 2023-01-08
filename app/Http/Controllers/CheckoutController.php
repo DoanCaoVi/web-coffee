@@ -37,7 +37,7 @@ class CheckoutController extends Controller
         $shipping->shipping_address = $data['shipping_address'];
         $shipping->shipping_phone = $data['shipping_phone'];
         $shipping->shipping_notes = $data['shipping_notes'];
-        $shipping->shipping_method = $data['shipping_method'];
+        // $shipping->shipping_method = $data['shipping_method'];
         $shipping->save();
         $shipping_id = $shipping->shipping_id;
         $checkout_code = substr(md5(microtime()),rand(0,26),5);
@@ -61,13 +61,9 @@ class CheckoutController extends Controller
                 $order_details->product_name = $cart['product_name'];
                 $order_details->product_price = $cart['product_price'];
                 $order_details->product_sales_quantity = $cart['product_qty'];
-                $order_details->product_coupon = $data['order_coupon'];
-                $order_details->product_feeship = $data['order_fee'];
                 $order_details->save();
             }
         }
-        Session::forget('coupon');
-        Session::forget('fee');
         Session::forget('cart');
     }
     public function del_fee(){

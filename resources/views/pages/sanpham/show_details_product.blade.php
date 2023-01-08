@@ -3,18 +3,7 @@
 @section('content')
 
 @foreach($product_details as $key => $details)
-<div class="product-details" 
-style=" background-image: linear-gradient(0,rgb(45 44 44),rgb(173 173 164));
-    	border-radius: 15px;
-		border: 15px solid #d3ec9f;"><!--product-details-->
-<div class="fb-share-button" data-href="http://localhost/shopbanhang/trang-chu" 
-data-layout="button_count" data-size="small"><a target="_blank" 
-href="https://www.facebook.com/sharer/sharer.php?u={{$url_canonical}}&amp;src=sdkpreparse" 
-class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
-<div class="fb-like" style="top:8px;" data-href="{{$url_canonical}}"
- data-width="" data-layout="button_count" 
- data-action="like" data-size="small" data-share="false"></div>
-
+<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
 								<img src="{{URL::to('/public/uploads/product/'.$details->product_image)}}" alt="" />
@@ -48,31 +37,14 @@ class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<h3 style="
-									text-shadow: 0 0  5px #6cd2ef,
-												0 0  10px #6cd2ef,
-												0 0  15px #6cd2ef,
-												0 0  30px #6cd2ef;
-									color: white;
-									font-weight: bold;
-								" >CHI TIẾT SẢN PHẨM</h3>
-							<h3 style="
-									text-shadow: 0 0  5px #6cd2ef,
-												0 0  10px #6cd2ef,
-												0 0  15px #6cd2ef,
-												0 0  30px #6cd2ef;
-									color: white;
-									font-weight: bold;
-								">-----~~~~~~~~-----</h3>
+								<h3>CHI TIẾT SẢN PHẨM</h3>
+							<h3>-----~~~~~~~~-----</h3>
 								<!-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> -->
 
 						<form action="{{URL::to('/show-cart-ajax')}}" method="post">
 								{{ csrf_field() }} <!-- đây là 1 cái token -->
-								<h2 style="
-									color: white;
-									font-weight: bold;
-								">Tên sản phẩm: {{$details->product_name}}</h2> <!-- biến details lấy tên từ product_name trong cơ sở dữ liệu ra -->
-								<p>Mã ID: {{$details->product_id}}</p>
+								<h2>Tên sản phẩm: {{$details->product_name}}</h2> <!-- biến details lấy tên từ product_name trong cơ sở dữ liệu ra -->
+								<h2>Mã ID: {{$details->product_id}}</h2>
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
 									<span>Giá: {{number_format($details->product_price)}}.VNĐ </span>
@@ -90,10 +62,10 @@ class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 											
 								<button type="button" class="btn btn-default add-to-cart" data-id_product="{{$details->product_id}}" name="add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
 								</span>
-								<p><b>Tình Trạng: </b> Còn hàng</p>
-								<p><b>Điều Kiện: </b> Còn Nguyên Si</p>
-								<p><b>Chất Liệu: </b> {{$details->material_name}}</p>
-								<p><b>Danh Mục: </b> {{$details->category_name}}</p>
+								<h2><b>Kho hàng: </b> {{$details->product_quantity}}</h>
+								<h2><b>Xuất xứ: </b> {{$details->product_origin}}</h>
+								<h2><b>Danh mục: </b> {{$details->category_name}}</h>
+								<h2><b>Loại: </b> {{$details->material_name}}</h>
 								<!-- <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
 							</div><!--/product-information-->
 						</form>
@@ -103,12 +75,7 @@ class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 					</div><!--/product-details-->
 @endforeach
 
-					<div class="category-tab shop-details-tab" 
-					style=" background-image: linear-gradient(0,rgb(51 51 51),rgb(210 218 208));
-							border-radius: 15px;
-							border: 5px solid #d3ec9f;
-							color: #fff;
-							"><!--category-tab-->
+					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
 	     <!-- class="active" --><li class="active"><a href="#details" data-toggle="tab">Mô Tả Sản Phẩm</a></li>
@@ -159,14 +126,8 @@ class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 						</div>
 					</div><!--/category-tab-->
 					
-					<div class="recommended_items" 
-					style=" background-image: linear-gradient(0,rgb(51 51 51),rgb(210 218 208));
-							border-radius: 15px;
-							border: 5px solid #d3ec9f;
-							padding-bottom: 100px;
-							"><!--recommended_items-->
-						<h2 class="title text-center">Sản Phẩm Liên Quan</h2>
-						
+					<div class="recommended_items"><!--recommended_items-->
+						<p class="title-text-center text-center">Sản Phẩm liên quan</p>
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
 								<div class="item active">	
@@ -179,10 +140,14 @@ class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 												<form action="{{URL::to('/show-cart-ajax')}}" method="post">
 													{{ csrf_field() }} <!-- đây là 1 cái token -->
 													<img src="{{URL::to('public/uploads/product/'.$lienquan->product_image)}}" alt="" />
+													<input type="hidden" value="{{$details->product_id}}" class="cart_product_id_{{$details->product_id}}">
+													<input type="hidden" value="{{$details->product_name}}" class="cart_product_name_{{$details->product_id}}">
+													<input type="hidden" value="{{$details->product_image}}" class="cart_product_image_{{$details->product_id}}">
+													<input type="hidden" value="{{$details->product_price}}" class="cart_product_price_{{$details->product_id}}">
+													<input type="hidden" value="1" class="cart_product_qty_{{$details->product_id}}">
 													<h2>{{number_format($lienquan->product_price)}}.VNĐ</h2>
 													<p>{{$lienquan->product_name}}</p>
 													<button type="button" class="btn btn-default add-to-cart" data-id_product="{{$lienquan->product_id}}" name="add-to-cart">
-													<i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
 												</form>
 												</div>
 											</div>

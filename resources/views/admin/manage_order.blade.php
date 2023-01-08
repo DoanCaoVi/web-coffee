@@ -20,10 +20,9 @@
         <thead>
           <tr>
             <th>Số Thứ Tự</th>
-            <th>Mã đơn hàng</th>
-            <th>Tình trạng đơn hàng</th>
-            <th>Thời gian đặt hàng</th>
-            <th style="width:30px;"></th>
+            <th>Mã code order</th>
+            <th>Thời gian gửi</th>
+            <th>Tình trạng order</th>
           </tr>
         </thead>
         <tbody>

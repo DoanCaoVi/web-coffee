@@ -107,7 +107,6 @@
 		#back{
 			/* background-size: cover; */
 			list-style: none;
-			width: 100px;
 			height: 50px;
 			border-radius:5px;
 			padding-top: 20px;
@@ -257,7 +256,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-4">
+					<!-- <div class="col-sm-4">
 					<form action="{{URL::to('/tim-kiem')}}" method="post">
 					{{ csrf_field() }}
 						<div class="search_box pull-right">
@@ -265,7 +264,7 @@
 							<input type="submit" style="margin-top:0px;color:#fff;" name="search_items" class="btn btn-primary btn-sm got2" value="Tìm Ngay"/>
 						</div>
 					</form>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div><!--/header-bottom-->
@@ -284,22 +283,21 @@
 					<div class="left-sidebar">
 						<h2>Danh Mục</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-						@foreach($category as $key => $cate)
+							@foreach($category as $key => $cate)
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title"><a href="{{URL::to('/danh-muc/'.$cate->category_id)}}">{{$cate->category_name}}</a></h4>
+									</div>
+								</div>
+							@endforeach
+						</div><!--/category-products-->
+						<h2>Loại hàng</h2>
+						<div class="panel-group category-products" id="accordian">
+							@foreach($material as $key => $mate)
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="{{URL::to('/danh-muc/'.$cate->category_id)}}">{{$cate->category_name}}</a></h4>
+									<h4 class="panel-title"><a href="{{URL::to('/chat-lieu/'.$mate->material_id)}}"> <span class="pull-right">(50)</span>{{$mate->material_name}}</a></h4>
 								</div>
-							</div>
-						@endforeach
-						</div><!--/category-products-->
-					
-						<div class="brands_products"><!--brands_products-->
-							<h2>Loại hàng</h2>
-							@foreach($material as $key => $mate)
-							<div class="brands-name">
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href="{{URL::to('/chat-lieu/'.$mate->material_id)}}"> <span class="pull-right">(50)</span>{{$mate->material_name}}</a></li>
-								</ul>
 							</div>
 							@endforeach
 						</div><!--/brands_products-->
@@ -384,17 +382,16 @@
 				var shipping_address = $('.shipping_address').val();
 				var shipping_phone = $('.shipping_phone').val();
 				var shipping_notes = $('.shipping_notes').val();
-				var shipping_method = $('.payment_select').val();
-				var order_fee = $('.order_fee').val();
-				var order_coupon = $('.order_coupon' ).val();
+				// var shipping_method = $('.payment_select').val();
+				// var order_fee = $('.order_fee').val();
+				// var order_coupon = $('.order_coupon' ).val();
 				var _token = $('input[name="_token"]').val();
 				
 				$.ajax({
 					url: '{{url('/confirm-order')}}',
 					method: 'POST',
 					data:{shipping_email:shipping_email,shipping_name:shipping_name,shipping_address:
-					shipping_address,shipping_phone:shipping_phone,shipping_notes:shipping_notes,order_fee:
-					order_fee,order_coupon:order_coupon,shipping_method:shipping_method,_token:_token},
+					shipping_address,shipping_phone:shipping_phone,shipping_notes:shipping_notes,_token:_token},
 						success:function(){
 							swal({
 								title: "Bạn có chắc chắn xác nhận đơn hàng",
@@ -408,11 +405,10 @@
 					           },
 								function(){
 									swal("^____^", "Đặt hàng thành công!", "success");
-							});
-
-							window.setTimeout(function(){
-								location.reload();
-							},3000);
+								});
+								window.setTimeout(function(){
+									location.reload();
+								},3000);
 						}
 
 				});
@@ -441,12 +437,12 @@
 						success:function(data){
 							
 							 swal({
-									title: "Đã thêm sản phẩm vào giỏ hàng",
-									text: "Bạn có thể mua hàng tiếp hoặc tới giỏ hàng để tiến hành thanh toán",
+									title: "Đã thêm sản phẩm vào giỏ để nhập kho",
+									text: "Bạn có thể chọn sản phẩm hoặc tới kho để tiến hành gửi yêu cầu nhập kho",
 									showCancelButton: true,
 									cancelButtonText: "Xem tiếp",
 									confirmButtonClass: "btn-success",
-									confirmButtonText: "Đi đến giỏ hàng",
+									confirmButtonText: "Vào nhập Kho",
 									closeOnConfirm: false,
 								},
 								function() {
@@ -486,7 +482,7 @@
 		});
 	});
 	</script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(document).ready(function(){
 			$('.calculate_delivery').click(function(){
 				var matp = $('.city').val();
@@ -507,7 +503,7 @@
 					}
 			});
 		});
-	</script>
+	</script> -->
 
 
 </body>

@@ -35,7 +35,7 @@
           $a = 0;
           $total = 0;
         @endphp
-              @foreach($order_details_product as $key => $details)
+        @foreach($order_details_product as $key => $details)
               @php
                 $a++;
                 $subtotal = $details->product_price*$details->product_sales_quantity;
@@ -105,9 +105,13 @@
       </table>
       <!-- lệnh target = _blank khi bấm vào sẽ sinh ra một cái trang pdf mới -->
     </div>
-  <button>
-      <a class="box" target="_blank" href="{{url('/print-order/'.$details->order_code)}}">Print....</a>
-  </button>
+
+    <button>
+        @foreach($order_details_product as $key => $details)
+          <a class="box" target="_blank" href="{{url('/print-order/'.$details->order_code)}}">Print....</a>
+        @endforeach
+    </button>
+
   <form action="{{url('export-orderdetails')}}" method="POST" style="margin-top:20px;">
     @csrf
     <input type="submit" value="Export file Excel" name="export_csv" class="btn btn-success">

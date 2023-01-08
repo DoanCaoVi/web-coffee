@@ -6,15 +6,7 @@
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
 				  <li><a href="{{URL::to('/')}}">Trở về Trang Chủ</a></li>
-				  <li class="active"
-				  				style="
-									text-shadow: 0 0  5px #6cd2ef,
-												0 0  10px #6cd2ef,
-												0 0  15px #6cd2ef,
-												0 0  30px #6cd2ef;
-									color: white;
-									font-weight: bold;
-								">Giỏ hàng của bạn</li>
+				  <li class="active"><a>Sản phẩm cần đưa vào kho</a></li>
 				</ol>
 			</div>
 			<?php
@@ -24,17 +16,11 @@
                           Session::put('message', null);
                            }
                      ?>
-			<div class="table-responsive cart_info" 				 
-			style=" background-image: linear-gradient(0,rgb(51 51 51),rgb(58 58 56));
-					border-radius: 15px;
-					border: 15px solid #d3ec9f;
-					color: #ffffff;
-					font-size: 15px;
-					margin-right: -168px;">
+			<div class="table-responsive cart_info" >
 			
 				<form action="{{url('/update-cart')}}" method="post">
 				@csrf
-				<table class="table table-condensed">
+				<table class="table table-condensed"  style="width: 98%;">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Hình ảnh</td>
@@ -61,11 +47,10 @@
 								width="100px" height="100px" alt="{{$cart['product_name']}}" /></a>
 								</td>
 								<td class="cart_description">
-									<h4><a href=""></a></h4>
-									<p>{{$cart['product_name']}}</p>
+									<h4>{{$cart['product_name']}}</h>
 								</td>
 								<td class="cart_price">
-									<p>{{number_format($cart['product_price'],0,',','.')}}.VNĐ</p>
+									<h3>{{number_format($cart['product_price'],0,',','.')}}.VNĐ</h>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
@@ -90,10 +75,10 @@
 					@endforeach
 							<tr>
 								<td>
-									<input type ="submit" value="cập nhật giỏ hàng" name="update_qty" class="btn btn-default check_out btn-sm">
+									<input type ="submit" value="cập nhật" name="update_qty" class="btn btn-default check_out btn-sm">
 								</td>
 								<td>
-									<a class="btn btn-default check_out" href="{{url('/delete-all')}}">xoá tất cả sản phẩm trong giỏ hàng</a>
+									<a class="btn btn-default check_out" href="{{url('/delete-all')}}">xoá tất cả sản phẩm</a>
 								</td>
 
 
@@ -138,8 +123,7 @@
 															@endforeach
 											@endif   
 										 </li>
-										<li>Phí vận chuyển <span>Free</span></li>
-										<li>Thành tiền: {{number_format($subtotal,0,',','.')}}.VNĐ <span></span></li>
+										<!-- <li>Thành tiền: {{number_format($subtotal,0,',','.')}}.VNĐ <span></span></li> -->
 									</ul>
 								</td>
 							</tr>
@@ -148,14 +132,14 @@
 						   <tr>
 								<td colspan="5">
 									@php
-										echo 'Vui long thêm sản phẩm vào giỏ hàng';
+										echo 'Vui lòng thêm sản phẩm';
 									@endphp
 								</td>
 						   </tr>
 						@endif
 					</tbody>
 					</form>	
-						   <tr>
+						   <!-- <tr>
 						   		<td>
 
 									<form method="POST" action="{{url('/check-coupon')}}">
@@ -164,31 +148,27 @@
 										<input type="submit" class="btn btn-default check_out check_coupon" name="check_coupon" value="Tính mã giảm giá">
 									</form>
 								</td>
-						   </tr>
+						   </tr> -->
 						   
 				</table>
 				
-				
-			</div>
-		</div>
-	</section> <!--/#cart_items-->
-
-	<section id="do_action">
-
-			<div class="row">
-
 				<div class="col-sm-6">
 					<div class="total_area">
 						<?php 
 									$customer_id = Session::get('customer_id');
 									if($customer_id!=null){									
 								?>
-								<a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Thanh Toán</a>
+								 <button style="background: #ddcfcf;">
+								    <a class="box" href="{{URL::to('/checkout')}}">Nhập kho</a>
+								 </button>
+								
 								<?php 
 									}else{
 										?>		
+								   <button style="background: #ddcfcf;">
+								   		<a class="box" href="{{URL::to('/login-checkout')}}">Nhập kho</a>
+								   </button>
 									
-									<a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh Toán</a>
 									<?php
 
 									}
@@ -196,5 +176,6 @@
 						</div>
 				</div>
 			</div>
-	</section><!--/#do_action -->
+		</div>
+	</section> <!--/#cart_items-->
     @endsection

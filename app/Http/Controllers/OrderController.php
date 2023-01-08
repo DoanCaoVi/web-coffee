@@ -95,26 +95,26 @@ class OrderController extends Controller
         }
         $customer = Customer::where('customer_id',$customer_id)->first();
         $shipping = Shipping::where('shipping_id',$shipping_id)->first();
-        $order_details_product = OrderDetails::where('order_code',$checkout_code)->get();
-        foreach($order_details as $key => $order_d){
-            $product_coupon = $order_d->product_coupon;
-        }
-        if($product_coupon!='no'){
-            $coupon = Coupon::Where('coupon_code',$product_coupon)->first();;
-            $coupon_condition = $coupon['coupon_condition'];
-            $coupon_number = $coupon['coupon_number'];
-            if($coupon_condition==1){
-                $coupon_echo = $coupon_number.' %';
-            }elseif($coupon_condition==2){
-                $coupon_echo = number_format($coupon_number,0,',','.').' VNĐ';
-            }
-        }else{
-            $coupon_condition = 2;
-            $coupon_number = 0;
-            $coupon_echo = '0';
-        }
+        // $order_details_product = OrderDetails::where('order_code',$checkout_code)->get();
+        // foreach($order_details as $key => $order_d){
+        //     $product_coupon = $order_d->product_coupon;
+        // }
+        // if($product_coupon!='no'){
+        //     $coupon = Coupon::Where('coupon_code',$product_coupon)->first();;
+        //     $coupon_condition = $coupon['coupon_condition'];
+        //     $coupon_number = $coupon['coupon_number'];
+        //     if($coupon_condition==1){
+        //         $coupon_echo = $coupon_number.' %';
+        //     }elseif($coupon_condition==2){
+        //         $coupon_echo = number_format($coupon_number,0,',','.').' VNĐ';
+        //     }
+        // }else{
+        //     $coupon_condition = 2;
+        //     $coupon_number = 0;
+        //     $coupon_echo = '0';
+        // }
         $output = '';
-        $coupon_echo = number_format($coupon_number,0,',','.').' VNĐ';
+        //$coupon_echo = number_format($coupon_number,0,',','.').' VNĐ';
         $output.='
             <style>
                 body{
@@ -182,8 +182,6 @@ class OrderController extends Controller
                     <thead>
                         <tr>
                             <th>Tên Sản phẩm</th>
-                            <th>Mã giảm giá</th>
-                            <th>Phí giao hàng</th>
                             <th>Số lượng</th>
                             <th>Giá tiền của sản phẩm</th>
                             <th>Thành tiền</th>
@@ -197,16 +195,15 @@ class OrderController extends Controller
                     $subtotal = $product->product_price*$product->product_sales_quantity;
                     $total += $subtotal;
 
-                    if($product->product_coupon!='no'){
-                        $product_coupon = $product->product_coupon;
-                    }else{
-                        $product_coupon = "Không có mã giảm giá";
-                    }
+                    // if($product->product_coupon!='no'){
+                    //     $product_coupon = $product->product_coupon;
+                    // }else{
+                    //     $product_coupon = "Không có mã giảm giá";
+                    // }
    
                     $output.='
                         <tr>
                             <td>'.$product->product_name.'</td>
-                            <td>'.$product->product_coupon.'</td>
                            
                             <td>'.$product->product_sales_quantity.'</td>
                             <td>'.number_format($product->product_price,0,',','.').' VNĐ'.'</td>
@@ -214,21 +211,18 @@ class OrderController extends Controller
 
                         </tr>';
                     }
-                    if($coupon_condition == 1){
-                        $total_after_coupon = ($total*$coupon_number)/100;
-                        /* echo 'Tổng giảm:'.number_format($total_after_coupon,0,',','.').' VNĐ'.'</br>'; */
-                        $total_coupon = $total - $total_after_coupon;
-                    }else{
-                        /* echo 'Tổng giảm :'.number_format($coupon_number,0,',','.').' VNĐ'.'</br>'; */
+                    // if($coupon_condition == 1){
+                    //     $total_after_coupon = ($total*$coupon_number)/100;
+                    //     /* echo 'Tổng giảm:'.number_format($total_after_coupon,0,',','.').' VNĐ'.'</br>'; */
+                    //     $total_coupon = $total - $total_after_coupon;
+                    // }else{
+                    //     /* echo 'Tổng giảm :'.number_format($coupon_number,0,',','.').' VNĐ'.'</br>'; */
                        
-                    }
+                    // }
             $output.='
                     <tr>
                         <td colspan="2">
-                            <p>Tổng giảm:'.$coupon_echo.'</p>
-                            
-                            <p>Thanh toán: '.'</br>'.number_format($total,0,',','.').' VNĐ'.'</p>
-                            
+                            <p>Tổng tiền chi: '.'</br>'.number_format($total,0,',','.').' VNĐ'.'</p>
                         </td>
                     </tr>';
             $output.='   
@@ -266,16 +260,16 @@ class OrderController extends Controller
         foreach($order_details as $key => $order_d){
             $product_coupon = $order_d->product_coupon;
         }
-        if($product_coupon!='no'){
-            $coupon = Coupon::Where('coupon_code',$product_coupon)->first();;
-            $coupon_condition = $coupon['coupon_condition'];
-            $coupon_number = $coupon['coupon_number'];
-        }else{
-            $coupon_condition = 2;
-            $coupon_number = 0;
-        }
+        // if($product_coupon!='no'){
+        //     $coupon = Coupon::Where('coupon_code',$product_coupon)->first();;
+        //     $coupon_condition = $coupon['coupon_condition'];
+        //     $coupon_number = $coupon['coupon_number'];
+        // }else{
+        //     $coupon_condition = 2;
+        //     $coupon_number = 0;
+        // }
 
-        return view('admin.view_order')->with(compact('order_details', 'customer', 'shipping', 'order_details_product', 'coupon_condition', 'coupon_number', 'order','order_status'));
+        return view('admin.view_order')->with(compact('order_details', 'customer', 'shipping', 'order_details_product', 'order','order_status'));
     }
 
     public function delete_order($order_code){
